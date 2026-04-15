@@ -24,10 +24,13 @@ const FindMovieComponent: React.FC<Props> = ({ addMovie }) => {
 
   const requestMovie = () => {
     setLoading(true);
+    setMovie(null);
+    setError(null);
     getMovie(query)
       .then(response => {
         if ('Error' in response) {
           setError(response);
+          setMovie(null);
 
           return;
         }
